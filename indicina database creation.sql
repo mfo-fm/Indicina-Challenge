@@ -1,5 +1,8 @@
+------------------------------------------------------------------------------------------------------------
 CREATE DATABASE CreditRiskDataWarehouse;
+------------------------------------------------------------------------------------------------------------
 USE CreditRiskDataWarehouse;
+------------------------------------------------------------------------------------------------------------
 -- Loan Application Dimensions Table
 CREATE TABLE Loan_Application_Dim (
     Application_ID VARCHAR(50) PRIMARY KEY,
@@ -11,7 +14,7 @@ CREATE TABLE Loan_Application_Dim (
     Annual_Income DECIMAL(10, 2),
     INDEX (Customer_ID)
 );
-
+-------------------------------------------------------------------------------------------------------------
 -- Customer Bank Statement Dimensions Table
 CREATE TABLE Customer_Bank_Statement_Dim (
     Transaction_ID VARCHAR(50) PRIMARY KEY,
@@ -21,7 +24,7 @@ CREATE TABLE Customer_Bank_Statement_Dim (
     Narration VARCHAR(255),
     Balance DECIMAL(10, 2)
 );
-
+-------------------------------------------------------------------------------------------------------------
 -- Fact Table
 CREATE TABLE Loan_Fact (
     Loan_Fact_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,5 +45,4 @@ CREATE TABLE Loan_Fact (
     FOREIGN KEY (Transaction_ID) REFERENCES Customer_Bank_Statement_Dim(Transaction_ID),
     INDEX (Customer_ID)  
 );
-
-
+-------------------------------------------------------------------------------------------------------------
